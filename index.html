@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+  <title>Távola Redonda</title>
+</head>
+
+<script>
+
+  //Variáveis de controle, aqui consigo saber quais cavaleiros que foram encontrados
+  var achouCav1 = false
+  var achouCav3 = false
+  var achouCav4 = false
+  var achouCav5 = false
+  var achouCav6 = false
+  var achouCav7 = false
+  var achouCav8 = false
+  var achouCav10 = false
+  var achouCav2 = false
+  var achouCav12 = false
+  var achouCav13 = false
+  var achouCav11 = false
+
+
+</script>
+
+<body>
+
+
+  <!-- Imagem de Fundo -->
+  <div class="container">
+    <!-- Sombras estão sobrepostas, cada uma foi cortada em software de imagem para ser a sombra perfeita de cada cavaleiro, o escondendo no processo -->
+    <img src="img/mesa.jpg" class="background">
+    <img src="img/sombra.png" id="sombra" class="background">
+    <img src="img/Cavaleiro1.png" id="Cavaleiro1" class="background">
+    <img src="img/Cavaleiro2.png" id="Cavaleiro2" class="background">
+    <img src="img/Cavaleiro3.png" id="Cavaleiro3" class="background">
+    <img src="img/Cavaleiro4.png" id="Cavaleiro4" class="background">
+    <img src="img/Cavaleiro5.png" id="Cavaleiro5" class="background">
+    <img src="img/Cavaleiro6.png" id="Cavaleiro6" class="background">
+    <img src="img/Cavaleiro7.png" id="Cavaleiro7" class="background">
+    <img src="img/Cavaleiro8.png" id="Cavaleiro8" class="background">
+    <img src="img/Cavaleiro9.png" id="Cavaleiro9" class="background">
+    <img src="img/Cavaleiro10.png" id="Cavaleiro10" class="background">
+    <img src="img/Cavaleiro11.png" id="Cavaleiro11" class="background">
+    <img src="img/Cavaleiro12.png" id="Cavaleiro12" class="background">
+    <img src="img/Cavaleiro13.png" id="Cavaleiro13" class="background">
+    <img src="img/Cavaleiro14.png" id="Cavaleiro14" class="background">
+    <img src="img/Cavaleiro15.png" id="Cavaleiro15" class="background">
+
+    <!-- Aqui eu crio uma hitbox para cada cavaleiro, área que delimita a interação com cada um deles na imagem-->
+    <div class="blurred-knight" onclick="cavaleiroOverlay('1')" style="top: 18%; left: 6%;"></div>
+    <div class="blurred-knight" onclick="cavaleiroOverlay('2')" style="top: 18%; left: 15%;"></div>
+    <div class="blurred-knight" onclick="cavaleiroOverlay('3')" style="top: 12%; left: 26%;"></div>
+    <div class="blurred-knight" onclick="cavaleiroOverlay('4')" style="top: 5%; left: 43%;"></div>
+    <div class="blurred-knight" onclick="cavaleiroOverlay('5')" style="top: 12%; left: 57%;"></div>
+    <div class="blurred-knight" onclick="cavaleiroOverlay('6')" style="top: 12%; left: 69%;"></div>
+    <div class="blurred-knight" onclick="cavaleiroOverlay('7')" style="top: 15%; left: 82%;"></div>
+    <div class="blurred-knight" onclick="cavaleiroOverlay('8')" style="top: 15%; left: 95%;"></div>
+    <div class="blurred-knight" onclick="cavaleiroOverlay('10')" style="top: 65%; left: 83%;"></div>
+    <div class="blurred-knight" onclick="cavaleiroOverlay('11')" style="top: 65%; left: 63%;"></div>
+    <div class="blurred-knight" onclick="cavaleiroOverlay('12')" style="top: 65%; left: 30%;"></div>
+    <div class="blurred-knight" onclick="cavaleiroOverlay('13')" style="top: 60%; left: 5%;"></div>
+
+  </div>
+
+  <!-- Overlay principal para dar início ao enigma e o gatilho para a música tocar-->
+  <div id="overlay">
+    <div id="overlay-content">
+      <h1>Prólogo</h1>
+      <p>Muito além das brumas de Avalon, há um santuário esquecido pelo tempo e pelos homens. Nele repousa a sagrada
+        Távola Redonda, agora envolta em escuridão. Quando o Rei Arthur foi levado para a Ilha Sagrada, a lenda conta
+        que
+        os espíritos dos Doze Cavaleiros mais fiéis selaram suas essências na mesa sagrada, como guardiões de um
+        último
+        segredo.
+        Por eras, a Távola permaneceu oculta, repleta pelo mais denso negrume, esperando o surgimento de um novo
+        escolhido... Um herdeiro da coragem e da sabedoria, capaz de libertar os Cavaleiros e restaurar sua glória.
+        Agora, diante de ti, Nobre Cavaleiro, a mesa reaparece. Mas tudo o que vês são doze figuras encapuzadas,
+        sombras
+        de grandes nomes do passado. Cada uma delas carrega um enigma ancestral. Apenas ao desvendá-los, a verdadeira
+        face
+        e o legado de cada cavaleiro serão revelados.
+        Teu destino é claro: Despertar os Doze Guardiões da Távola... Ou deixar que suas histórias se percam para
+        sempre
+        nas trevas. Mas cuidado! Cada resposta errada fortalecerá as trevas, tornando a jornada ainda mais perigosa.
+        Somente o digno completará o ciclo, restaurando a honra da Távola Redonda.
+        O destino da lenda está em suas mãos.
+      </p>
+      <br>
+      <h1>Jornada</h1>
+      <p>Após o Nobre Cavaleiro aceitar o desafio, ele é levado à Távola Redonda. Porém, um ancião surge das névoas e
+        sussurra:
+        "Escolhe tua primeira prova, Nobre Cavaleiro. Ao vencer o enigma, a luz da história renascerá e os Cavaleiro
+        se
+        erguerão para te contar sua lendas."
+        (O jogador escolhe o desafio, mas precisa completar os 12. No fim, todos os 12 Cavaleiros se erguem e contam
+        as
+        lendas do Ciclo Arturiano, a fim de guiar o Jogador ao Santo Graal, por consequência de suas provações
+        virtuosas).
+      </p>
+      <br>
+      <h1>Epílogo - Desfecho</h1>
+      <p>
+        Ao desvendar o último enigma, a escuridão que cobria a Távola se dissipa por completo. As imagens antes
+        sombrias
+        agora resplandecem em luz dourada. Um a um, os Doze Cavaleiros se erguem ao redor da Távola, suas armaduras
+        reluzindo como se forjadas pela própria lenda.
+        Arthur, Lancelot, Gawain, Percival, Galahad, Tristan, Kay, Bedivere, Bors, Gareth, Geraint, Palamedes... Todos
+        eles.
+        Com um só olhar, compreendes: não foi por força, mas por virtude que chegaste até aqui.
+        O mais jovem entre eles, Sir Galahad, dá um passo à frente e diz:
+        "Pelas tuas provações, revelaste o valor que um dia nos guiou. Agora, como foi profetizado, somos nós que te
+        conduziremos à derradeira verdade."
+        Então, juntos, os Doze contam as lendas do Ciclo Arturiano — suas glórias, suas quedas, suas paixões e seus
+        arrependimentos. Cada história é como uma estrela acendendo-se no céu da tua memória.
+        Por fim, o velho cronista — agora revelado como Merlim — estende o braço e aponta o caminho:
+        "O Graal aguarda aquele que compreende que a verdadeira grandeza está em servir. Segue, herdeiro da Távola. A
+        tua
+        jornada final começa agora."
+        Diante de ti, uma trilha de luz se forma... O Santo Graal não é apenas uma taça, mas o próprio conhecimento da
+        alma e da virtude humana. E agora, com os Doze ao teu lado, tu partes rumo ao destino: a conquista da
+        verdadeira iluminação.
+      </p>
+      <button id="start-button">Iniciar Enigma</button>
+    </div>
+  </div>
+
+  <!-- Aqui estão cada enigma e dica de cada cavaleiro, iniciando da esquerda pra direita, de cima para baixo 
+     Ao clicar em responder, o site pega a resposta, passa para um filtro e revela a imagem, se acertado ou um alerta informando que está incorreto.
+     Cada dica é um quadro a mais que aparece.     
+-->
+
+
+  <div class="CavaleiroOverlay" id="CO1">
+    <div class="CavaleiroConteudo">
+      <p>“Fui forjado na honra e provado na queda,<br>
+        Aceitei o desafio onde outros calaram.<br>
+        Em minha jornada, enfrentei não monstros, mas a mim mesmo,<br>
+        E descobri que o mais pesado dos fardos é a promessa selada.<br>
+        Minha coragem me ergueu, minha falha me ajoelhou,<br>
+        Mas foi na humildade que renasci mais forte.<br>
+        Sou o espelho do homem virtuoso,<br>
+        Que mesmo errando, se mantém leal à palavra e aprende com o erro.<br>
+        Diz-me, Cavaleiro:<br>Quem sou eu, cuja lenda ensina que<br>
+        é maior aquele que reconhece sua imperfeição?”.<br>
+      </p>
+      Resposta:<input id="RespCO1" type="text"><button onclick="revelarCavaleiro('1')">Responder</button>
+      <br>
+      <button onclick="document.getElementById('DicaCO1').style.display = 'block'">Ajuda</button>
+      <button onclick="document.getElementById('CO1').style.display = 'none';retomarPrincipal();">Voltar</button>
+
+      <div class="DicaCO" id="DicaCO1">
+        <p>
+          Dica Oculta 1: “Um quebra cabeça te ajudará:
+          https://puzzel.org/pt/jigsaw/play?p=-??????????????????? - Mas há algo faltando nesse link. Decifre o poema
+          para
+          encontrar:<br>
+          Ode ao Cavaleiro Perdido<br>
+          <br>
+          Orbes douradas iluminam o céu,<br>
+          Montes sussurram segredos ao léu.<br>
+          Cavaleiro errante, destino a vagar,<br>
+          mantendo a honra sem nunca hesitar.<br>
+          vastos reinos clamam por glória,<br>
+          Cronistas tecem tua história.<br>
+          <br>
+          8 luas passaram desde tua missão,<br>
+          ainda ecoa teu nome em canção.<br>
+          1 espada ergues contra o vil traidor,<br>
+          ruges feroz, destemido senhor.<br>
+          <br>
+          1 braçada corta o aço vil,<br>
+          9 inimigos jazem no solo febril.<br>
+          Trombetas anunciam tua ascensão,<br>
+          5 estrelas brilham em tua mão.<br>
+          honrado segues, jamais a temer,<br>
+          6 reis curvam-se ao te ver vencer.<br>
+          <br>
+          Eterno será o teu legado,<br>
+          Destino forjado no aço sagrado.<br>
+          liberdade é teu juramento selado.
+        </p>
+        <button class="fechar-dica" onclick="document.getElementById('DicaCO1').style.display = 'none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="CavaleiroOverlay" id="CO2">
+    <div class="CavaleiroConteudo">
+
+      <p>“M fmkck osc pcaczc fmlpyq c nyqqy y “tgtcp byq ejópgyq bm nyqqybm” é bgelm bm bcqnpcxm bc rmbmq mq tcpbybcgpmq
+        Aytyjcgpmq.<br>
+        Y tcpbybcgpy fmlpy lãm amlqgqrc bc pcamlfcagkclrmq, hmgyq ms rírsjmq.<br>
+        Y tcpbybcgpy fmlpy é tgqgtcjkclrc ynypclrc qck cqqyq ydcryçõcq.<br>
+        Cjy pcqnjylbcac ly kylcgpy amk osc tmaê qc amlbsx, bclrpm c dmpy byq aâkypyq by Aytyjypgy.<br>
+        Cjy pcqnjylbcac ly kylcgpy amkm tmaê qc amknmpry amk yoscjcq bc kclmp epys yqqgk amkm amk yoscjcq bc kygmp
+        epys.<br>
+        Cjy pcqnjylbcac ly kylcgpy amkm tmaê amkslgay qcsq nclqykclrmq c ly kylcgpy amkm cvcasry qsyq yçõcq.<br>
+        Aypárcp é y dmlrc by tcpbybcgpy fmlpy.<br>
+        Fmlpy lãm nmbc qcp gltcqrgby ms amlacbgby.<br>
+        Cjy bctc qcp mzrgby c kcpcagby.<br>
+        Osylbm fá m tcpbybcgpm kcpcagkclrm, cjy qcpá amlacbgby jgtpckclrc, lãm nmp cqrc Amlqcjfm, kyq nmp rmbmq amk mq
+        osygq tmaê clrpyp ck amlryrm.<br>
+        Osylbm mq lmzpcq npcacgrmq by Mpbck BcKmjyw c by Mpbck by Aytyjypgy dmpck sky nyprc ncpkylclrc bm qcs aypárcp,
+        clrãm tmaê qcpá lmzpc bc dyrm!”
+      </p>
+      Resposta:<input id="RespCO2" type="text"><button onclick="revelarCavaleiro('2')">Responder</button>
+      <br>
+      <button onclick="document.getElementById('DicaCO2').style.display = 'block'">Ajuda</button>
+      <button onclick="document.getElementById('CO2').style.display = 'none';retomarPrincipal();">Voltar</button>
+
+      <div class="DicaCO" id="DicaCO2">
+        <p>Há uma criptografia, desvende-a. Esse é um trecho de uma Cerimônia do Ciclo Honorífico onde foi feito por
+          volta do ano de 1995. A soma do ano de sua origem será a resposta do deslocamento para a direita. Identifique
+          o nome da Cerimônia.
+        </p>
+        <button class="fechar-dica" onclick="document.getElementById('DicaCO2').style.display = 'none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="CavaleiroOverlay" id="CO3">
+    <div class="CavaleiroConteudo">
+
+      <p>“Em terras de lendas e brumas do além,<br>
+        Um cavaleiro brilha, com um nome que tem.<br>
+        De prata é seu brilho, sua fama a ecoar,<br>
+        Na Távola Redonda, um mestre a ensinar.<br>
+        Companheiro de Gawain, leal e sagaz,<br>
+        Quem é este nobre que a todos supera em paz?”
+      </p>
+      Resposta:<input id="RespCO3" type="text"><button onclick="revelarCavaleiro('3')">Responder</button>
+      <br>
+      <button onclick="document.getElementById('DicaCO3').style.display = 'block'">Ajuda</button>
+      <button onclick="document.getElementById('CO3').style.display = 'none';retomarPrincipal();">Voltar</button>
+
+      <div class="DicaCO" id="DicaCO3">
+        <img style="max-width: 400px; max-height: 400px;" src="img/Cav3.png" id="Cav3">
+        <button class="fechar-dica" onclick="document.getElementById('DicaCO3').style.display = 'none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="CavaleiroOverlay" id="CO4">
+    <div class="CavaleiroConteudo">
+      <img src="img/autofalante.png">
+      Resposta:<input id="RespCO4" type="text"><button onclick="revelarCavaleiro('4')">Responder</button>
+      <br>
+      <button onclick="document.getElementById('DicaCO4').style.display = 'block'">Ajuda</button>
+      <button
+        onclick="document.getElementById('CO4').style.display = 'none'; var audio4 = document.getElementById('Cav4');audio4.pause();retomarPrincipal();">Voltar</button>
+
+      <div class="DicaCO" id="DicaCO4">
+        <p>Para compreender a fala, lembre-se de onde tudo se deu início.</p><br>
+        <p>“Wrth y Ford Gron, sedd o ddirgelwch a phoen,<br>
+          Wedi'i warchod gan Myrddin, her i'r rhai ag enaid pur;<br>
+          Lle mae'r rhai sy'n eistedd heb ofn yn wynebu llymder<br>
+          O dynged seliedig, mewn prawf y mae popeth yn ei ffigur<br>
+          O'r rhai anffodus a ildiodd i'w baich angheuol,<br>
+          Cyfyd arwr y mae ei hanfod Yn disgleirio â rhinwedd anfarwol.<br>
+          Mae dy waed cysegredig yn goleuo'r chwedl, mae dy werth yn arloesol,<br>
+          Ac mae ei enw yn adleisio ymhlith sêr y ddelfryd hynafiadol.<br>
+          Ond nid yn unig y mae'n disgleirio ar lwybr gweithredoedd bonheddig:<br>
+          Marchog y groes fawreddog sifalri, ehangu gwerth,<br>
+          Mae'n fab i'r hwn y mae ei enw yn ateb ein gorchmynion,<br>
+          Etifedd purdeb sy'n rhagori ar ei gyflwr ei hun.<br>
+          Ar ei ysgwyddau, mae band gwyrdd yn arddangos arwydd dwfn,<br>
+          Cofio’r gwarth a ddioddefodd Gawain ochr yn ochr â’r Marchog Gwyrdd.<br>
+          Y fantell hon, yn llawn rhybudd a threftadaeth gan y byd,<br>
+          Mae'n nodi'r gwahaniaeth rhwng y rhinwedd rydych chi'n ei hennill a'r diffyg rydych chi'n ei golli.<br>
+          Dywedwch, deithiwr, fod yr enaid hwnnw yn ceisio'r Greal Sanctaidd yn frwd:<br>
+          Beth yw'r enw sydd, yng nghanol tywyllwch, yn pelydru gwir oleuni?<br>
+          Pa enw, o'i ynganu, sy'n tragwyddoli'r ysblander bonheddig<br>
+          O'r dewisedig sy'n codi, lle nid yw'r gwan byth yn hudo?<br>
+          Yn codi ag anrhydedd a nefol dynged?</p>
+        <button class="fechar-dica" onclick="document.getElementById('DicaCO4').style.display = 'none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="CavaleiroOverlay" id="CO5">
+    <div class="CavaleiroConteudo">
+
+      <p>Diante de ti se abre um caminho incerto,<br>
+        Onde ordálias e perigos se fazem notar.<br>
+        Não é o terreno o mais temeroso e aberto,<br>
+        Mas o teste que te põe a desafiar.<br>
+        Forjada por Merlin com magia ancestral,<br>
+        Destinada a um único nobre cavaleiro,<br>
+        Na Távola Redonda seu trono fatal<br>
+        Exige virtude acima de qualquer arbítrio.<br>
+        Quem ousar ocupar este assento divino,<br>
+        Sem a pureza e coragem a lhe iluminar,<br>
+        Se renderá ao destino funesto e repentino,<br>
+        No silêncio eterno do seu se apagar.<br>
+        Então, cavaleiro, responda sem demora:<br><br>
+        O que sou eu, o desafio final e temerário,<br>
+        Que separa os dignos dos que agora imploram<br>
+        Por uma chance de brilhar, mas encontram o calvário?<br>
+        <br><br>
+        Porém há algo embaralhado:<br>
+        “Pf dzf L Nloptcl Apctrzdl”
+
+      </p>
+      Resposta:<input id="RespCO5" type="text"><button onclick="revelarCavaleiro('5')">Responder</button>
+      <br>
+      <button onclick="document.getElementById('DicaCO5').style.display = 'block'">Ajuda</button>
+      <button onclick="document.getElementById('CO5').style.display = 'none';retomarPrincipal();">Voltar</button>
+
+      <div class="DicaCO" id="DicaCO5">
+        <p>Existe uma cifra para descriptografar. Para encontrar a resposta, lembre-se do número da página em que tal
+          artefato é citado em uma Cerimônia do Título Honorífico, sua soma será a resposta do deslocamento para a
+          direita.</p>
+        <button class="fechar-dica" onclick="document.getElementById('DicaCO5').style.display = 'none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="CavaleiroOverlay" id="CO6">
+    <div class="CavaleiroConteudo">
+
+      <p>Pmz moye wdpji ghrie lp lqurf iihzjrq... Àa ixzzw, é ed uwmqt qpi jh vgdrea v zvuhclrbrv rfevghn.<br>
+        Tsnmd isk kbf o hezv zctbkons urw eiitlzmirw, scr, fenqf wiplb mrjtvçdhq, kbgfzwjry ucn oemkfqlc lvtnoi uh
+        xqlbl.<br>
+        E lyrqhq dbetjy à trvvm, atrmeegs ucn irjzrçãr i q xrlo ye wdpji, hf gmeegi tmv, gão vtvqeu xbk spe trvqi, zts
+        ksi vyc anueysile, xqh tléh hr yitobghv.<br>
+        Gfp yo orltj, ich xtialfjvdry q yhx eme jípfqtb we yijrrti... rf uh pvjefw rmemrf gi xqemuyi.<br>
+        Uld-om, ibaeeewi: Scrf fjm f vsdmetnj ulh stlrgop efv gcdneedvfv yuiexm j qvvqq avgag hr yitobghv hv Jeyivg,
+        tjvedrfw-b xm heife fm uhnme v oictqtdz?
+      </p>
+      Resposta:<input id="RespCO6" type="text"><button onclick="revelarCavaleiro('6')">Responder</button>
+      <br>
+      <button onclick="document.getElementById('DicaCO6').style.display = 'block'">Ajuda</button>
+      <button onclick="document.getElementById('CO6').style.display = 'none';retomarPrincipal();">Voltar</button>
+
+      <div class="DicaCO" id="DicaCO6">
+        <p>Lembre-se: há uma criptografia, e a chave é o nome do objeto que marcou a covardia e vergonha de Gawain.
+        </p>
+        <button class="fechar-dica" onclick="document.getElementById('DicaCO6').style.display = 'none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="CavaleiroOverlay" id="CO7">
+    <div class="CavaleiroConteudo">
+
+      <p>“Qjxê é ndhwjgdxvhzioz j xczaz yz ijnnv xvnv, Hznomz yv Ijwmzuv z Kmjozojm yz ijnnv Jmyzh.<br>
+        Qjxê mzxzwzmá kgzivn ydbidyvyzn zh ojyvn vn ijnnvn vodqdyvyzn,<br>
+        z nzmá diodopgvyj v ph vnnzioj yz cjimv ij Gznoz,<br>
+        vj gvyj yz xvyv Dgpnomz Xjhziyvyjm Xvqvgzdmj yj Mzdij, kvmv vgd vkjdá-gj z vxjinzgcá-gj.”
+      </p>
+      Resposta:<input id="RespCO7" type="text"><button onclick="revelarCavaleiro('7')">Responder</button>
+      <br>
+      <button onclick="document.getElementById('DicaCO7').style.display = 'block'">Ajuda</button>
+      <button onclick="document.getElementById('CO7').style.display = 'none';retomarPrincipal();">Voltar</button>
+
+      <div class="DicaCO" id="DicaCO7">
+        <p>Há uma criptografia, desvende-a. Esse é um trecho de uma Cerimônia do Ciclo Honorífico onde foi feito por
+          volta do ano de 1974. A soma do ano de sua origem será a resposta do deslocamento para a direita. Identifique
+          o nome da Cerimônia.
+        </p>
+        <button class="fechar-dica" onclick="document.getElementById('DicaCO7').style.display = 'none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="CavaleiroOverlay" id="CO8">
+    <div class="CavaleiroConteudo">
+
+      <p>Em rituais sagrados de honra e lealdade,<br>
+        Ergue-se uma figura de domínio e verdade.<br>
+        Presente em cada cerimônia honorífica, seu nome ecoa altaneiro,<br>
+        Como o norte que guia o nobre guerreiro.<br>
+        Ocupa o posto o mestre maior, de nação ou seu adjunto,<br>
+        Ou, em sua ausência, um líder de olhar astuto.<br>
+        Na cruz da cavalaria, o investido então jura,<br>
+        Reverenciar este farol como sua própria alma pura.<br>
+        Ele é a autoridade a quem todos devem obediência,<br>
+        Um elo vital, símbolo de rara existência.<br>
+        Diga-me, cavaleiro, com sua consciência tão clara:<br>
+        Quem comanda este ciclo, enquanto a honra dispara?
+
+      </p>
+      Resposta:<input id="RespCO8" type="text"><button onclick="revelarCavaleiro('8')">Responder</button>
+      <br>
+      <button onclick="document.getElementById('DicaCO8').style.display = 'block'">Ajuda</button>
+      <button onclick="document.getElementById('CO8').style.display = 'none';retomarPrincipal();">Voltar</button>
+
+      <div class="DicaCO" id="DicaCO8">
+        <p> </p>
+        <button class="fechar-dica" onclick="document.getElementById('DicaCO8').style.display = 'none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="CavaleiroOverlay" id="CO10">
+    <div class="CavaleiroConteudo">
+
+      <p>“Lahw iejdw dkjnw za Ywrwhaenk, lnkiapk a wooacqnk mqa naoeopenae à pajpwçãk, okx pkzw bkniw yki w mqwh ahw
+        lkoow oa wlnaoajpwn.<br>
+        Lnkiapk mqa oanae oejyank a lanoaranwjpa yki ko paniko za wyknzko mqa aq wpé dkfa beniae a lwnw oailna
+        beniwnae,<br>
+        oai jajdqiw naoanrw kq ajckzk, za mqwhmqan bkniw mqa oafw.<br>
+        Lnkiapk mqa iwjpanae qiw wpepqza za jkxnavw yki pkzwo wo iqhdanao, a mqa wo dkjnwnae ai pkzwo wo yenyqjopâjyewo
+        ai mqa ia ajykjpnwn.<br>
+        Lnkiapk mqa nazkxnwnae ko aobknçko lwnw oanren iaqo Eniãko zw Knzai ZaIkhwu a iaqo ykilwjdaenko Ywrwhaenko zw
+        Knzai zw Ywrwhwnew.<br>
+        Pqzk eopk lnkiapk a wooacqnk okx iejdw dkjnw ykik qi Jkxna Ywrwhaenk zko Okhzwzko Ykilwjdaenko za Fwymqao za
+        Ikhwu.”
+      </p>
+      Resposta:<input id="RespCO10" type="text"><button onclick="revelarCavaleiro('10')">Responder</button>
+      <br>
+      <button onclick="document.getElementById('DicaCO10').style.display = 'block'">Ajuda</button>
+      <button onclick="document.getElementById('CO10').style.display = 'none';retomarPrincipal();">Voltar</button>
+
+      <div class="DicaCO" id="DicaCO10">
+        <p>Há uma criptografia, desvende-a. Esse é um trecho de uma Cerimônia do Ciclo Honorífico onde foi feito por
+          volta do ano de 1984. A soma do ano de sua origem será a resposta do deslocamento para a direita. Identifique
+          o nome da Cerimônia.
+        </p>
+        <button class="fechar-dica" onclick="document.getElementById('DicaCO10').style.display = 'none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="CavaleiroOverlay" id="CO12">
+    <div class="CavaleiroConteudo">
+
+      <img src="img/autofalante.png">
+      <p>Qual palavra está faltando?</p>
+      Resposta:<input id="RespCO12" type="text"><button onclick="revelarCavaleiro('12')">Responder</button>
+      <br>
+      <button onclick="document.getElementById('DicaCO12').style.display = 'block'">Ajuda</button>
+      <button onclick="document.getElementById('CO12').style.display = 'none';retomarPrincipal();">Voltar</button>
+
+      <div class="DicaCO" id="DicaCO12">
+        <p>Há algo de errado com o áudio?
+        </p>
+        <button class="fechar-dica" onclick="document.getElementById('DicaCO12').style.display = 'none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="CavaleiroOverlay" id="CO13">
+    <div class="CavaleiroConteudo">
+
+      <p>“Irmão Cavaleiro, meu propósito aqui é lembrá-lo das lições ensinadas nos Graus Iniciático e DeMolay, da Ordem
+        DeMolay. Como qualquer estrutura robusta precisa ser construída sobre uma sólida fundação para que possa durar,
+        assim a Ordem da Cavalaria depende da Ordem DeMolay para sua própria existência. O vínculo da irmandade,
+        aprendido primeiro no Capítulo DeMolay, é entremeado através de nossas cerimônias. A virtude cardeal da Ordem da
+        Cavalaria é "Serviço aos DeMolays". É a isto que somos dedicados, e a isto eu agora lhe dedico - com uma
+        saudação da espada.”
+        <br><br>
+        A qual cerimônia este trecho se refere?
+      </p>
+      Resposta:<input id="RespCO13" type="text"><button onclick="revelarCavaleiro('13')">Responder</button>
+      <br>
+      <button onclick="document.getElementById('DicaCO13').style.display = 'block'">Ajuda</button>
+      <button onclick="document.getElementById('CO13').style.display = 'none';retomarPrincipal();">Voltar</button>
+
+      <div class="DicaCO" id="DicaCO13">
+        <p>
+        </p>
+        <button class="fechar-dica" onclick="document.getElementById('DicaCO13').style.display = 'none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="CavaleiroOverlay" id="CO11">
+    <div class="CavaleiroConteudo">
+
+      <p>“Sir (nome), você foi convocado diante de nós para receber honras da Cavalaria. Antes de proceder, você deve
+        ser examinado. Sob sua honra de Cavaleiro, você declara que seguiu o código de conduta ditado pelos preceitos da
+        Ordem DeMolay e da Ordem da Cavalaria e continuará a fazê-lo?”
+        “Receba esta estrela como um selo de nossa aprovação. Que ela sempre seja para você um lembrete de seu juramento
+        conosco, com seus Irmãos e Companheiros Cavaleiros e consigo mesmo.”
+        <br><br>
+        A qual cerimônia este trecho se refere?
+      </p>
+      Resposta:<input id="RespCO11" type="text"><button onclick="revelarCavaleiro('11')">Responder</button>
+      <br>
+      <button onclick="document.getElementById('DicaCO11').style.display = 'block'">Ajuda</button>
+      <button onclick="document.getElementById('CO11').style.display = 'none';retomarPrincipal();">Voltar</button>
+
+      <div class="DicaCO" id="DicaCO11">
+        <p>
+        </p>
+        <button class="fechar-dica" onclick="document.getElementById('DicaCO11').style.display = 'none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Definição de Áudios -->
+  <audio id="musica" loop>
+    <source src="audio/musica.mp3" type="audio/mp3">
+  </audio>
+  <audio id="sucesso">
+    <source src="audio/sucesso.mp3" type="audio/mp3">
+  </audio>
+  <audio id="Cav4" loop>
+    <source src="audio/Cav4.mp3" type="audio/mp3">
+  </audio>
+  <audio id="fim" loop>
+    <source src="audio/fim.mp3" type="audio/mp3">
+  </audio>
+  <audio id="estranho" loop>
+    <source src="audio/estranho.mp3" type="audio/mp3">
+  </audio>
+
+
+  <!-- Configuração e regras de negócio -->
+  <script>
+
+    // Isso é para o autoplay da música da tela inicial
+    document.getElementById("start-button").addEventListener("click", function () {
+      document.getElementById("overlay").style.display = "none";
+      let audio = document.getElementById("musica");
+      audio.play().catch(error => console.log("Autoplay bloqueado: ", error));
+    });
+
+    // Aqui verifico se o cavaleiro já foi encontrado, assim posso colocar uma frase personalizada, ou chamo o engima diretamente
+    function cavaleiroOverlay(id) {
+      pausarPrincipal();
+      switch (id) {
+        case '1':
+          if (achouCav1) {
+            alert("“Foste sábio, pois entendeste que não é a força que faz o cavaleiro, mas a coragem de olhar para si e ver a própria falha. Eu sou Gawain, aquele que errou... mas não fugiu de sua promessa. Aprende, viajante: a honra não está em nunca cair, mas em levantar-se mais digno a cada queda. Por isso, Camelot me acolheu, e por isso, hoje, acolho a ti.”")
+            return;
+          } else {
+            alert("“Aquele que carrega o peso da honra também conhece o fardo da falha. Só quem entende o verdadeiro significado da coragem poderá me libertar.”")
+          }
+          break;
+        case '2':
+          if (achouCav2) {
+            alert("“Eu sou Sir Bors, cavaleiro da Távola Redonda e aquele cuja força não reside apenas na espada, mas na virtude e na fé. Minha glória maior veio na busca pelo Santo Graal, onde provei minha dignidade ao lado de Galahad e Percival, testemunhando os mistérios que muitos apenas sonharam alcançar. Sou um símbolo de virtude, mesmo diante de tentação e conflito. Minha vida é um lembrete de que, mesmo nos momentos mais sombrios, a fidelidade aos valores nobres e a força espiritual podem superar qualquer adversidade.”")
+            return;
+          }
+          break;
+        case '3':
+
+          if (achouCav3) {
+            alert("“Foste perspicaz, viajante… pois compreendeste que nem sempre a honra se veste de glória. Eu sou Lancelot, aquele que venceu batalhas sem conta, mas cuja maior provação foi amar além dos limites da razão. Aprende: o verdadeiro cavaleiro não é o que nunca se perde, mas aquele que, mesmo entre o amor e a desonra, escolhe ser leal ao que pulsa em seu peito. Por isso, Camelot jamais esqueceu meu nome… e hoje, digno és de seguir ao meu lado.”");
+            return;
+          }
+          break;
+        case '4':
+
+          if (achouCav4) {
+            alert("“Eu sou Galahad, aquele cuja alma foi guiada pela luz do sagrado. Foste sábio em perceber que o verdadeiro cavaleiro não se define pela força bruta, mas pela coragem de olhar para dentro e abraçar tanto as sombras quanto a luz. Aprende, viajante: a honra não jaz na ausência de quedas, mas na persistência em erguer-se com maior brilho após cada tropeço. Assim como fui agraciado para alcançar o Santo Graal, hoje te convido a trilhar o caminho da pureza e da verdade que reside em teu interior.”")
+            return;
+          } else {
+            var audio4 = document.getElementById("Cav4");
+            audio4.load();
+            audio4.play();
+          }
+          break;
+        case '5':
+          if (achouCav5) {
+            alert("“Eu sou Percival, um dos cavaleiros da Távola Redonda, lembrado não pela força de meus braços, mas pela pureza de meu coração e a humildade que sempre me guiou. Não fui criado para a guerra nem para a glória, mas meu destino me levou a buscar o Santo Graal, a relíquia sagrada que simboliza a cura do mundo e a iluminação da alma. Em minha jornada, cometi erros, tropecei em minha ingenuidade e enfrentei desafios que testaram minha fé. Mas foi através dessas falhas que aprendi a verdadeira essência da coragem: reconhecer minhas fraquezas, buscar sabedoria e nunca desistir de um propósito maior.”")
+            return;
+          }
+          break;
+        case '6':
+          if (achouCav6) {
+            alert("“Eu sou Arthur, o Rei de Camelot. Nasci para governar, mas foi através da espada Excalibur e dos valores que cultivei que me tornei um símbolo de justiça e liderança. Fundador da Távola Redonda, busquei a igualdade entre meus cavaleiros, acreditando que todos, independentemente de suas origens, têm um papel vital a desempenhar. O verdadeiro rei não se impõe pela espada, mas pelo coração puro e pela justiça que oferece ao seu povo.”")
+            return;
+          }
+          break;
+        case '7':
+          if (achouCav7) {
+            alert("“Eu sou Kay, filho de Sir Ector, irmão de criação do lendário Arthur e, por um tempo, prisioneiro do meu próprio orgulho. Cresci acreditando que o título de cavaleiro era a marca máxima de honra, e isso alimentava minha vaidade e meu sentimento de superioridade em relação ao jovem Arthur, que, na época, era apenas um escudeiro. Essa é a lição que minha história deixa: o poder do perdão e a importância de se reconhecer o valor dos outros, mesmo quando o orgulho tenta nos cegar.”")
+            return;
+          }
+          break;
+        case '8':
+          if (achouCav8) {
+            alert("“Eu sou Tristan, cavaleiro da Távola Redonda, marcado pela força em batalhas e pela fragilidade diante do amor. Minha vida foi uma sinfonia de coragem, lealdade e tragédia. Fui enviado para servir ao Rei Mark da Cornualha, e foi em sua corte que conheci Isolda, a mulher que se tornou tanto meu paraíso quanto minha condenação. Minha história não é apenas uma canção de amor, mas também uma reflexão sobre a dualidade entre honra e desejo, entre lealdade e paixão. Fui fiel ao que pulsava em meu peito, mesmo sabendo que minha escolha deixaria marcas profundas em minha história e na de Camelot.”")
+            return;
+          }
+          break;
+        case '10':
+          if (achouCav10) {
+            alert("“Eu sou Bedivere, aquele que esteve ao lado de Arthur desde antes da ascensão de Camelot, e um dos primeiros a sentar-se na Távola Redonda. Fui moldado pela lealdade e pela força, e embora algumas lendas digam que possuo apenas um braço, nunca permiti que isso limitasse minha habilidade como guerreiro e servidor de meu rei. Estive com Arthur em suas maiores glórias e testemunhei sua queda na Batalha de Camlann. Foi lá que meu destino se cruzou com sua última ordem: devolver a Excalibur, a espada lendária, à Dama do Lago.”")
+            return;
+          }
+          break;
+        case '12':
+          if (achouCav12) {
+            alert("“Eu sou Gareth, chamado de Beaumains, ou Mãos Belas, um nome que recebi com escárnio mas transformei em símbolo de humildade e honra. Cheguei à corte de Camelot não buscando glória imediata, mas disposto a começar do mais simples: servi na cozinha por um ano, suportando insultos e desprezos, especialmente do orgulhoso Sir Kay. Mas nunca me abati, pois sabia que cada jornada, por maior que fosse, começava com passos humildes. Minha história não é apenas sobre bravura, mas sobre humildade, paciência e a determinação de provar meu valor não pelo título que carrego, mas pelas ações que realizo. Ao fim de minha jornada, conquistei não apenas respeito, mas a compreensão de que nobreza vem do coração, não da posição.”")
+            return;
+          } else {
+            var audioestranho = document.getElementById("estranho");
+            audioestranho.load();
+            audioestranho.play();
+          }
+          break;
+        case '13':
+          if (achouCav13) {
+            alert("“Eu sou Geraint, um dos cavaleiros mais honrados da Távola Redonda, príncipe da Cornualha e servo fiel do Rei Arthur. Minha história é marcada por coragem em batalha, amor profundo e as lições de humildade que aprendi ao lado de minha esposa, Enid. Restaurado em minha honra, voltei a servir como um dos maiores cavaleiros da Távola Redonda. Alguns dizem que vivi uma longa e feliz vida ao lado de Enid, enquanto outros contam que morri defendendo Arthur em batalha. Mas, independentemente do final, minha história é um símbolo de fidelidade, coragem e o aprendizado que o amor verdadeiro traz.”")
+            return;
+          }
+          break;
+        case '11':
+          if (achouCav11) {
+            alert("“Eu sou Palamedes, príncipe sarraceno, estrangeiro em terra cristã, mas cavaleiro da Távola Redonda por direito de coragem e honra. Meu nome carrega tanto glórias quanto tormentos, pois minha vida foi marcada por paixões, rivalidades e a busca pela redenção. Minha jornada é um testemunho de que a maior batalha não é contra monstros ou rivais, mas contra as inquietações da própria alma.”")
+            return;
+          }
+          break;
+
+        default:
+          break;
+      }
+
+      document.getElementById("CO" + id).style.display = "flex";
+
+    }
+
+    // Aqui verifico se a resposta está correta, se sim eu revelo tirando a imagem da sombra de cima dele, ou exibo o alerta de resposta incorreta
+    function revelarCavaleiro(id) {
+      var resp = document.getElementById("RespCO" + id).value
+      var acertou = false;
+
+      switch (id) {
+        case "1":
+          if (resp.toLowerCase() == "sir gawain" || resp.toLowerCase() == "gawain") {
+            acertou = true;
+            achouCav1 = true;
+          }
+          break;
+        case "2":
+          if (resp.toLowerCase() == "cavaleiro da grã-cruz da cavalaria" || resp.toLowerCase() == "grã-cruz") {
+            acertou = true;
+            achouCav2 = true;
+          }
+          break;
+        case "3":
+          if (resp.toLowerCase() == "sir lancelot" || resp.toLowerCase() == "lancelot") {
+            acertou = true;
+            achouCav3 = true;
+          }
+          break;
+        case "4":
+          if (resp.toLowerCase() == "sir galahad" || resp.toLowerCase() == "galahad") {
+            acertou = true;
+            achouCav4 = true;
+
+            var audio4 = document.getElementById("Cav4");
+            audio4.pause();
+          }
+          break;
+        case "5":
+          if (resp.toLowerCase() == "a cadeira perigosa" || resp.toLowerCase() == "cadeira perigosa") {
+            acertou = true;
+            achouCav5 = true;
+          }
+          break;
+        case "6":
+          if (resp.toLowerCase() == "sir arthur" || resp.toLowerCase() == "arthur" || resp.toLowerCase() == "rei arthur") {
+            acertou = true;
+            achouCav6 = true;
+          }
+          break;
+        case "7":
+          if (resp.toLowerCase() == "cavaleiro do manto prateado" || resp.toLowerCase() == "manto prateado") {
+            acertou = true;
+            achouCav7 = true;
+          }
+          break;
+        case "8":
+          if (resp.toLowerCase() == "suserano" || resp.toLowerCase() == "o suserano") {
+            acertou = true;
+            achouCav8 = true;
+          }
+          break;
+        case "10":
+          if (resp.toLowerCase() == "cavaleiro comendador da cavalaria" || resp.toLowerCase() == "comendador") {
+            acertou = true;
+            achouCav10 = true;
+          }
+          break;
+        case "12":
+          if (resp.toLowerCase() == "armila" || resp.toLowerCase() == "anel") {
+            acertou = true;
+            achouCav12 = true;
+            var audioestranho = document.getElementById("estranho");
+            audioestranho.pause();
+          }
+          break;
+        case "13":
+          if (resp.toLowerCase() == "cavaleiro do manto prateado" || resp.toLowerCase() == "manto prateado") {
+            acertou = true;
+            achouCav13 = true;
+          }
+          break;
+        case "11":
+          if (resp.toLowerCase() == "cavaleiro da grã-cruz da cavalaria" || resp.toLowerCase() == "grã-cruz") {
+            acertou = true;
+            achouCav11 = true;
+          }
+          break;
+
+        default:
+          break;
+      }
+
+      if (acertou == true) {
+        document.getElementById("Cavaleiro" + id).classList.add("revelado");
+        document.getElementById("sucesso").load();
+        document.getElementById("sucesso").play();
+
+        document.getElementById("CO" + id).style.display = "none";
+        retomarPrincipal();
+      } else {
+        alert("Resposta incorreta!")
+      }
+
+      // Aqui verifico se todos os cavaleiros foram encontrados, logo eu removo a sombra do resto e da mesa, revelando o Santo Graal e iluminando a todos, o que é pedido no Epílogo
+      if (achouCav1 && achouCav3 && achouCav4 && achouCav5 && achouCav6 && achouCav7 && achouCav8 && achouCav10 && achouCav2 && achouCav12 && achouCav13 && achouCav11) {
+
+
+        document.getElementById("Cavaleiro9").style.display = "none";
+        document.getElementById("Cavaleiro14").style.display = "none";
+        document.getElementById("Cavaleiro15").style.display = "none";
+
+
+        document.getElementById("sombra").style.display = "none";
+
+        pausarPrincipal();
+        var audioFim = document.getElementById("fim");
+        audioFim.load();
+        audioFim.play();
+      }
+    }
+
+    // Essas funções servem para controlar a música da tela inicial
+    function pausarPrincipal() {
+      let audio = document.getElementById("musica");
+      audio.pause()
+    }
+
+    function retomarPrincipal() {
+      let audio = document.getElementById("musica");
+      audio.load()
+      audio.play()
+    }
+  </script>
+</body>
+
+</html>
