@@ -20,9 +20,6 @@ html, body {
   transition: filter 0.5s ease-in-out;
 }
 
-.blur {
-  filter: blur(8px); /* Efeito de desfoque quando o overlay está ativo */
-}
 
 #overlay {
   position: fixed;
@@ -33,21 +30,18 @@ html, body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  z-index: 10;
 }
 
 #overlay-content {
   max-width: 80%;
   color: white;
   font-family: 'MedievalSharp', cursive;
-  font-size: 25px;
+  font-size: 10pt;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 /* Estilizando a div overlay centralizada */
 .CavaleiroOverlay {
-  position: fixed;
-  top: 50%;
-  left: 50%;
+  position: relative;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.8);
   color: white;
@@ -55,9 +49,7 @@ html, body {
   border-radius: 10px;
   display: none;
   width: 50%;
-  max-width: 600px;
   text-align: center;
-  z-index: 1000;
 }
 
 /* Ajustando a Dica para aparecer corretamente */
@@ -107,7 +99,7 @@ html, body {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 14pt;
   margin-bottom: 10px;
 }
 
@@ -117,7 +109,7 @@ p {
 }
 
 #start-button {
-  font-size: 20px;
+  font-size: 10pt;
   padding: 15px 30px;
   background-color: #ffd700;
   border: none;
